@@ -1,5 +1,12 @@
 # makeCacheMatrix 
 
+## This function creates a special "matrix" object, which is really a list 
+## containing a function to
+## 1. set the value of the matrix
+## 2. get the value of the matrix
+## 3. set the value of the inverse
+## 4. get the value of the inverse
+
 makeCacheMatrix <- function(x = matrix()) {
     inv <- NULL
     set <- function(y) {
@@ -13,6 +20,12 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 #cacheSolve function
+
+## The following function calculates the inverse of the special "matrix" created
+## with the above function. However, it first checks to see if the inverse
+## has already been caclulated. If so, it 'get's the inverse from the cache
+## and skips the computation. Otherwise, it calculates the matrix inverse
+## and sets the value of the inverse in the cache via the 'setinverse' function.
 
 cacheSolve <- function(x, ...) {
     inv <- x$getinverse()
